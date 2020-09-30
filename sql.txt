@@ -1,0 +1,21 @@
+sudo yum install mysql-server -y
+sudo chkconfig mysqld on
+sudo service mysqld start
+mysqladmin -u root password [your_new_pwd]
+mysql -uroot -p
+Sql Command
+CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
+
+CREATE USER 'username'@'%' IDENTIFIED BY 'password';
+
+GRANT ALL PRIVILEGES ON *.* TO 'username'@'%' WITH GRANT OPTION;
+
+FLUSH PRIVILEGES;
+
+# Test
+mysql -u wordpress -h 13.233.173.208 -pgurpreet
+
+# Wordpress Server
+docker run --name wordpress -e WORDPRESS_DB_HOST=192.168.1.97:3306 -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=gurpreet  -e WORDPRESS_DB_NAME=wordpressdb -d -p 80:80 wordpress
